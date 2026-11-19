@@ -1,0 +1,96 @@
+CREATE TABLE IF NOT EXISTS pengguna (
+ id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+ nama VARCHAR(120) NOT NULL, email VARCHAR(254) NOT NULL UNIQUE,
+ password_hash VARCHAR(255) NOT NULL,
+ email_admin_dihapus VARCHAR(254) NULL,
+ email_pelanggan_dihapus VARCHAR(254) NULL,
+ peran ENUM('pelanggan','admin','superadmin') NOT NULL,
+ telepon VARCHAR(25) NOT NULL DEFAULT '',
+ aktif BOOLEAN NOT NULL DEFAULT 1, versi INT NOT NULL DEFAULT 1, auth_versi INT NOT NULL DEFAULT 1,
+ dibuat_pada DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS kategori (
+ id VARCHAR(80) PRIMARY KEY, nama VARCHAR(80) NOT NULL,
+ deskripsi VARCHAR(500) NOT NULL, versi INT NOT NULL DEFAULT 1, dihapus BOOLEAN NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS produk (
+ id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, kategori_id VARCHAR(80) NOT NULL,
+ nama VARCHAR(120) NOT NULL, harga DECIMAL(14,0) NOT NULL, stok INT UNSIGNED NOT NULL,
+ jenis ENUM('Ready Stock','Pre-Order') NOT NULL, aktif BOOLEAN NOT NULL DEFAULT 1,
+ deskripsi TEXT NOT NULL, gambar VARCHAR(255) NOT NULL DEFAULT '', foto_mime VARCHAR(80) NULL, foto LONGBLOB NULL,
+ versi INT NOT NULL DEFAULT 1, dihapus BOOLEAN NOT NULL DEFAULT 0,
+ FOREIGN KEY(kategori_id) REFERENCES kategori(id), CHECK(harga >= 0)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS keranjang (
+ pengguna_id INT UNSIGNED NOT NULL, produk_id INT UNSIGNED NOT NULL, jumlah INT UNSIGNED NOT NULL,
+ PRIMARY KEY(pengguna_id, produk_id), FOREIGN KEY(pengguna_id) REFERENCES pengguna(id),
+ FOREIGN KEY(produk_id) REFERENCES produk(id), CHECK(jumlah > 0)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS booking_harian (
+ tanggal DATE PRIMARY KEY, maksimal INT UNSIGNED NOT NULL DEFAULT 50, dibuka BOOLEAN NOT NULL DEFAULT 1,
+ versi INT NOT NULL DEFAULT 0, CHECK(maksimal <= 50)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS pesanan (
+ nomor VARCHAR(60) PRIMARY KEY, pengguna_id INT UNSIGNED NOT NULL,
+ jenis ENUM('pesan-sekarang','booking') NOT NULL, dibuat_pada DATETIME NOT NULL, tanggal_pesanan DATE NOT NULL,
+ nama_penerima VARCHAR(120) NOT NULL, telepon VARCHAR(15) NOT NULL, alamat VARCHAR(1000) NOT NULL,
+ penerimaan ENUM('ambil','kirim') NOT NULL, pengiriman VARCHAR(30) NULL, pembayaran VARCHAR(20) NOT NULL, tujuan_bank TEXT NULL,
+ catatan TEXT NOT NULL, status VARCHAR(60) NOT NULL, subtotal DECIMAL(14,0) NOT NULL,
+ estimasi_ongkir DECIMAL(14,0) NULL, ongkir_final DECIMAL(14,0) NULL, total_pembayaran DECIMAL(14,0) NULL,
+ batas_pembayaran DATETIME NULL, tanggal_selesai DATE NULL, dibatalkan_pada DATETIME NULL,
+ versi INT NOT NULL DEFAULT 0, catatan_ongkir TEXT NOT NULL,
+ FOREIGN KEY(pengguna_id) REFERENCES pengguna(id), INDEX(tanggal_pesanan,jenis,status), INDEX(pengguna_id,dibuat_pada)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS detail_pesanan (
+ nomor VARCHAR(60) NOT NULL, produk_id INT UNSIGNED NOT NULL,
+ nama VARCHAR(120) NOT NULL, gambar VARCHAR(255) NOT NULL, kategori VARCHAR(80) NOT NULL, harga DECIMAL(14,0) NOT NULL,
+ jumlah INT UNSIGNED NOT NULL, subtotal DECIMAL(14,0) NOT NULL,
+ PRIMARY KEY(nomor,produk_id), FOREIGN KEY(nomor) REFERENCES pesanan(nomor), FOREIGN KEY(produk_id) REFERENCES produk(id), CHECK(jumlah > 0)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS pembayaran (
+ nomor VARCHAR(60) PRIMARY KEY, nama_berkas VARCHAR(255) NOT NULL, ukuran INT UNSIGNED NOT NULL,
+ mime VARCHAR(80) NOT NULL, isi MEDIUMBLOB NOT NULL, waktu DATETIME NOT NULL,
+ keputusan VARCHAR(20) NULL, catatan TEXT NULL, diperiksa_pada DATETIME NULL,
+ FOREIGN KEY(nomor) REFERENCES pesanan(nomor)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS riwayat_pesanan (
+ nomor VARCHAR(60) NOT NULL, urutan INT UNSIGNED NOT NULL, status VARCHAR(60) NOT NULL,
+ waktu DATETIME NOT NULL, keterangan TEXT NOT NULL,
+ PRIMARY KEY(nomor,urutan), FOREIGN KEY(nomor) REFERENCES pesanan(nomor)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS aktivitas (
+ id VARCHAR(80) PRIMARY KEY, nomor VARCHAR(60) NULL, waktu DATETIME NOT NULL,
+ admin VARCHAR(120) NOT NULL, admin_key VARCHAR(100) NOT NULL, peran VARCHAR(30) NOT NULL,
+ aktivitas VARCHAR(150) NOT NULL, target TEXT NOT NULL, keterangan TEXT NOT NULL,
+ status VARCHAR(60) NOT NULL DEFAULT '', perubahan LONGTEXT NOT NULL CHECK(JSON_VALID(perubahan)), INDEX(waktu)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS faq (
+ id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, pertanyaan VARCHAR(300) NOT NULL, jawaban TEXT NOT NULL,
+ terbuka BOOLEAN NOT NULL DEFAULT 0, versi INT NOT NULL DEFAULT 1, dihapus BOOLEAN NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS profil_toko (
+ id INT PRIMARY KEY, nama VARCHAR(120) NOT NULL, slogan VARCHAR(160) NOT NULL,
+ deskripsi TEXT NOT NULL, alamat VARCHAR(1000) NOT NULL, whatsapp VARCHAR(25) NOT NULL, instagram VARCHAR(31) NOT NULL,
+ hari_operasional VARCHAR(120) NOT NULL, jam_operasional VARCHAR(80) NOT NULL,
+ logo MEDIUMTEXT NOT NULL, versi INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS bank_toko (
+ kode VARCHAR(20) PRIMARY KEY, nomor VARCHAR(25) NOT NULL, atas_nama VARCHAR(120) NOT NULL
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS notifikasi (
+ id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT, kunci VARCHAR(160) NOT NULL UNIQUE,
+ nomor VARCHAR(60) NOT NULL, peran ENUM('pelanggan','admin') NOT NULL, penerima_id INT UNSIGNED NULL,
+ pesan VARCHAR(300) NOT NULL, jenis VARCHAR(40) NOT NULL, waktu DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY(nomor) REFERENCES pesanan(nomor) ON DELETE CASCADE,
+ FOREIGN KEY(penerima_id) REFERENCES pengguna(id) ON DELETE CASCADE,
+ INDEX(peran,penerima_id,id)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS notifikasi_dibaca (
+ notifikasi_id BIGINT UNSIGNED NOT NULL, pengguna_id INT UNSIGNED NOT NULL, waktu DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY(notifikasi_id,pengguna_id), FOREIGN KEY(notifikasi_id) REFERENCES notifikasi(id) ON DELETE CASCADE,
+ FOREIGN KEY(pengguna_id) REFERENCES pengguna(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS profil_belanja_admin (
+ admin_id INT UNSIGNED PRIMARY KEY, pelanggan_id INT UNSIGNED NOT NULL UNIQUE,
+ FOREIGN KEY(admin_id) REFERENCES pengguna(id), FOREIGN KEY(pelanggan_id) REFERENCES pengguna(id)
+) ENGINE=InnoDB;

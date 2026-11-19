@@ -1,0 +1,35 @@
+.sa-nav-inner { display: grid; grid-template-columns: 166px 1fr 1.2fr 1fr 1fr; gap: 22px; align-items: center; min-height: 64px; }
+.sa-nav-inner .sa-current { background: var(--ad-cream); color: var(--ad-caramel); font-weight: 700; }
+.sa-nav-inner .ad-menu summary { gap: 36px; }
+.sa-main { padding-top: 30px; padding-bottom: 68px; }
+.sa-standalone.sa-form-screen { max-width: 960px; }
+.sa-standalone.sa-detail-screen { max-width: 1100px; }
+.sa-standalone h1[tabindex="-1"]:focus { outline: none; }
+.sa-back-link { display: inline-block; margin-bottom: 20px; color: #f4dfc6; font-size: 14px; text-decoration: none; }
+.sa-back-link:hover { color: #fff; text-decoration: underline; }
+.sa-back-link:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; border-radius: 3px; }
+.sa-standalone :is(.sa-admin-form-card, .sa-faq-form-card, .sa-customer-detail) { margin-top: 28px; padding: 28px; color: var(--ad-cocoa); }
+.sa-standalone .sa-admin-password-help { line-height: 1.7; }
+.sa-intro h1 { margin: 12px 0 4px; font-size: 32px; line-height: 1.35; }
+.sa-intro > p:last-child { font-size: 15px; color: #dcc9b5; }
+.sa-panel { margin-top: 28px; padding: 24px 23px 32px; }
+.sa-section-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.sa-section-heading p { margin-top: 5px; font-size: 14px; }
+.sa-month { padding-top: 4px; white-space: nowrap; font-size: 14px; }
+.sa-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 27px; }
+.sa-stat { min-width: 0; min-height: 144px; padding: 17px 19px 18px; border: 1px solid var(--ad-border); border-radius: 12px; background: #fff; display: flex; flex-direction: column; }
+.sa-stat p { color: var(--ad-muted); font-size: 14px; }
+.sa-stat strong { display: block; margin-top: 9px; color: var(--ad-caramel); font-size: 32px; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.sa-stat small { margin-top: auto; padding-top: 17px; font-size: 12px; color: var(--ad-muted); }
+.sa-account-heading { margin-top: 36px; }
+.sa-account-heading h2 { font-size: 22px; }
+.sa-account-heading p { margin-top: 5px; font-size: 14px; }
+.sa-account-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+.sa-account-cards > div { min-width: 0; padding: 17px 19px 19px; border: 1px solid var(--ad-border); border-radius: 12px; background: #fff; }
+.sa-account-cards h3 { font-size: 19px; }
+.sa-account-cards p { margin-top: 4px; font-size: 14px; }
+.sa-account-cards .ad-button { min-width: 230px; min-height: 46px; margin-top: 16px; }
+.sa-account-cards > div:last-child .ad-button { min-width: 252px; }
+.sa-primary { background: #fff; border-color: var(--ad-border); color: var(--ad-caramel); }
+@media (hover: hover) and (pointer: fine) { .sa-nav-inner > .ad-nav-link:hover { background: var(--ad-cream); color: var(--ad-caramel); } .sa-primary:hover { background: var(--ad-caramel); border-color: var(--ad-caramel); color: #fff; } }
+.sa-primary:active, .sa-primary:focus-visible { background: var(--ad-caramel); border-color: var(--ad-caramel); color: #fff; }

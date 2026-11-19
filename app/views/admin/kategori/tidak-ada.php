@@ -1,0 +1,1 @@
+<main class="ad-container ad-main" id="ad-main"><section class="ad-panel ad-empty"><h1>Kategori tidak ditemukan</h1><p><?= $aman($data['error']) ?></p><a class="ad-button" href="<?= $aman($urlKategori) ?>">Kembali ke Kelola Kategori</a></section></main>

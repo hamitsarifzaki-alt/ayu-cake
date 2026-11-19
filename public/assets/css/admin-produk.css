@@ -1,0 +1,47 @@
+.ad-products-panel .ad-panel-heading p { margin-top: 4px; }
+.ad-products-filters { margin-bottom: 30px; }
+.ad-products-reset { margin: -16px 0 20px; }
+.ad-products-reset .ad-text-link { margin: 0; }
+.ad-product-admin-table { min-width: 1120px; table-layout: fixed; }
+.ad-product-admin-table th:nth-child(1) { width: 27.5%; }
+.ad-product-admin-table th:nth-child(2) { width: 12.7%; }
+.ad-product-admin-table th:nth-child(3) { width: 13.8%; }
+.ad-product-admin-table th:nth-child(4) { width: 14.1%; }
+.ad-product-admin-table th:nth-child(5) { width: 14.9%; }
+.ad-product-admin-table th:nth-child(6) { width: 17%; }
+.ad-product-admin-table thead th { padding-block: 15px; }
+.ad-product-admin-table tbody tr { height: 100px; }
+.ad-product-admin-table .ad-badge { width: 100%; white-space: nowrap; }
+.ad-product-cell { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.ad-product-cell > div { min-width: 0; overflow-wrap: anywhere; }
+.ad-product-cell img, .ad-product-placeholder { flex: 0 0 64px; width: 64px; height: 64px; border: 1px solid var(--ad-border); border-radius: 11px; object-fit: cover; }
+.ad-product-placeholder { display: inline-flex; align-items: center; justify-content: center; background: #f2e8d8; color: var(--ad-muted); font-size: 12px; }
+.ad-product-actions { display: flex; gap: 10px; }
+.ad-product-actions .ad-button { flex: 1; padding-inline: 12px; }
+.ad-product-delete { background: #faebe7; color: #b94132; border-color: #faebe7; }
+.ad-product-delete:active, .ad-product-delete:focus-visible { background: #b94132; color: #fff; border-color: #b94132; }
+.ad-product-message { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 24px; padding: 14px 18px; border-radius: 10px; background: #e8f3e8; color: #356c3c; }
+.ad-product-message form { margin: 0; }
+.ad-form-error { margin-top: 20px; padding: 14px 18px; border-radius: 10px; background: #faebe7; color: #a63124; }
+.ad-product-back { display: inline-block; margin-top: 22px; color: #dcc9b5; }
+.ad-product-form-panel { margin-top: 18px; }
+.ad-product-photo-field { display: flex; align-items: center; gap: 24px; padding-block: 24px; border-bottom: 1px solid var(--ad-border); margin-bottom: 24px; }
+.ad-product-photo-preview { width: 160px; min-height: 160px; flex: 0 0 160px; display: grid; place-items: center; border: 1px solid var(--ad-border); border-radius: 12px; overflow: hidden; background: #f2e8d8; color: var(--ad-muted); }
+.ad-product-photo-preview img { width: 160px; height: 160px; object-fit: cover; }
+.ad-product-photo-field > div:last-child { min-width: 0; }
+.ad-product-photo-field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.ad-product-photo-field input { width: 100%; max-width: 420px; min-height: 44px; padding-block: 8px; color: var(--ad-cocoa); }
+.ad-product-photo-field input::file-selector-button { padding: 8px 14px; border: 1px solid var(--ad-border); border-radius: 8px; margin-right: 12px; background: #fff; color: var(--ad-caramel); cursor: pointer; }
+.ad-photo-reselect { margin-top: 12px; padding: 10px 12px; border-radius: 9px; background: var(--ad-light); color: var(--ad-caramel); font-size: 13px; }
+.ad-photo-clear { margin-top: 12px; font-size: 13px; }
+.ad-product-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px 24px; }
+.ad-product-fields label { display: flex; flex-direction: column; gap: 8px; min-width: 0; font-size: 13px; font-weight: 700; }
+.ad-product-fields :is(input, select, textarea) { display: block; width: 100%; min-width: 0; min-height: 46px; padding: 11px 13px; border: 1px solid var(--ad-border); border-radius: 9px; background: #fff; color: var(--ad-cocoa); font: inherit; font-size: 14px; font-weight: 400; }
+.ad-product-fields textarea { resize: vertical; min-height: 130px; }
+.ad-product-fields .ad-field-help { font-size: 12px; color: var(--ad-muted); font-weight: 400; }
+.ad-product-description { grid-column: 1 / -1; }
+.ad-product-form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 28px; }
+.ad-product-form-actions .ad-button { min-width: 150px; }
+.ad-product-confirm { max-width: 800px; margin-inline: auto; }
+.ad-product-confirm .ad-product-cell { margin-block: 24px; }
+@media (hover: hover) and (pointer: fine) { .ad-product-delete:hover { background: #b94132; color: #fff; border-color: #b94132; } .ad-product-back:hover { text-decoration: underline; } }

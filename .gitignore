@@ -1,0 +1,10 @@
+/.vscode/
+.env
+.env.*
+*.pem
+*.key
+*.log
+*.zip
+*.tar.gz
+/database/backups/
+/public/uploads/

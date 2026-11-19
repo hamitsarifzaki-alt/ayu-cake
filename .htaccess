@@ -1,0 +1,10 @@
+Options -Indexes
+
+# Alamat laptop untuk UAT pada jaringan Wi-Fi yang sama.
+# Perbarui APP_URL ini jika IP laptop berubah atau aplikasi dipasang di hosting.
+SetEnv APP_URL "http://10.239.136.94/ayu-cake"
+
+# Dokumentasi dan konfigurasi internal hanya untuk pengelola proyek.
+<FilesMatch "(?i)(\.(md|sql|log|bak|ini)$)">
+    Require all denied
+</FilesMatch>

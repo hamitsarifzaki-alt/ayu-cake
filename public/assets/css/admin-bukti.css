@@ -1,0 +1,6 @@
+.ad-proof-full-main { padding-bottom: 48px; }
+.ad-proof-full-panel { margin-top: 20px; padding: 24px; }
+.ad-proof-full-panel h2 { font-size: 22px; overflow-wrap: anywhere; }
+.ad-proof-full-file { margin: 8px 0 20px; color: var(--ad-muted); font-size: 12px; overflow-wrap: anywhere; }
+.ad-proof-full-photo { padding: 12px; border: 1px solid var(--ad-border); border-radius: 10px; background: #e9e5de; }
+.ad-proof-full-photo img { display: block; width: auto; max-width: 100%; height: auto; margin: 0 auto; background: #fff; }

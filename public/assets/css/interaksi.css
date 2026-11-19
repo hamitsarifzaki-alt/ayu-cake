@@ -1,0 +1,189 @@
+/* Keadaan interaksi bersama: aksi netral sampai pengguna berinteraksi.
+   Dimuat setelah gaya halaman, termasuk auth.css.
+   :focus-visible menjaga navigasi keyboard. */
+
+body :is(
+    .button, .dp-action, .dp-secondary-actions button,
+    .cp-catalog-button, .tk-button,
+    .co-submit, .pb-button, .po-button,
+    .kb-primary, .kb-secondary,
+    .auth-submit
+):not(:disabled):not([aria-disabled="true"]) {
+    background: var(--ayu-action-background, #fff9f0);
+    color: var(--ayu-action-text, var(--ayu-action-accent, #a04a15));
+    border: 1px solid var(--ayu-action-border, #eadbc7);
+    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+body :is(
+    .button, .dp-action, .dp-secondary-actions button,
+    .cp-catalog-button, .tk-button,
+    .co-submit, .pb-button, .po-button,
+    .kb-primary, .kb-secondary,
+    .auth-submit
+):is(:disabled, [aria-disabled="true"]) {
+    background: #e7ded5;
+    color: #8c7b70;
+    border: 1px solid #e7ded5;
+}
+
+body .po-danger { --ayu-action-accent: #b13a32; }
+
+body .dp-action span { color: var(--ayu-action-caption, #78665d); }
+
+body :is(
+    .button, .dp-action, .dp-secondary-actions button,
+    .cp-catalog-button, .tk-button,
+    .co-submit, .pb-button, .po-button,
+    .kb-primary, .kb-secondary,
+    .auth-submit
+):not(:disabled):not([aria-disabled="true"]):is(:focus-visible, :active) {
+    --ayu-action-background: var(--ayu-action-accent, #a04a15);
+    --ayu-action-text: #ffffff;
+    --ayu-action-border: var(--ayu-action-accent, #a04a15);
+    --ayu-action-caption: #fff0d8;
+}
+
+/* Header menandai halaman saat ini; menu lain menonjol saat berinteraksi. */
+body .site-header .header-actions :is(.header-button, .header-button.header-current):not([aria-disabled="true"]), body .ac-account .ac-account__toggle:not([aria-disabled="true"]) {
+    background: var(--ayu-menu-background, #fff0d8);
+    color: var(--ayu-menu-text, #a04a15);
+    border-color: var(--ayu-menu-border, transparent);
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+body .site-header .header-actions :is(.header-button, .header-button.header-current):not([aria-disabled="true"]):is(:focus-visible, :active),
+body .ac-account .ac-account__toggle:not([aria-disabled="true"]):is(:focus-visible, :active) {
+    --ayu-menu-background: #a04a15;
+    --ayu-menu-text: #ffffff;
+    --ayu-menu-border: #d98f39;
+    --ayu-badge-background: #fff0d8;
+    --ayu-badge-text: #a04a15;
+}
+
+body .site-header .header-actions .header-cart-count {
+    background: var(--ayu-badge-background, #a04a15);
+    color: var(--ayu-badge-text, #fff9f0);
+}
+
+body .site-header .header-button.header-current,
+body .ac-account.ac-account-current .ac-account__toggle,
+body .ac-account[open] .ac-account__toggle {
+    --ayu-menu-background: #a04a15;
+    --ayu-menu-text: #ffffff;
+    --ayu-menu-border: #d98f39;
+    --ayu-badge-background: #fff0d8;
+    --ayu-badge-text: #a04a15;
+}
+
+body .ac-account .ac-account__link:not([aria-disabled="true"]) {
+    background: var(--ayu-link-background, transparent);
+    color: var(--ayu-link-text, #3e2723);
+    font-weight: 400;
+}
+
+body .ac-account .ac-account__exit {
+    --ayu-link-text: #b33a32;
+    --ayu-link-highlight: #fff1ef;
+    --ayu-link-highlight-text: #922c25;
+}
+
+body .ac-account .ac-account__link[aria-current="page"] {
+    --ayu-link-background: #fff0d8;
+    --ayu-link-text: #a04a15;
+    font-weight: 700;
+}
+
+body .ac-account .ac-account__link:not([aria-disabled="true"]):is(:focus-visible, :active) {
+    --ayu-link-background: var(--ayu-link-highlight, #fff0d8);
+    --ayu-link-text: var(--ayu-link-highlight-text, #a04a15);
+}
+
+/* Kontrol kecil tidak menyimpan warna hover setelah tap. */
+body :is(.dp-quantity-control, .kb-stepper, .co-calendar-navigation, .search-form) {
+    --ayu-control-ink: #a04a15;
+}
+body :is(
+    .dp-quantity-control button, .kb-stepper button,
+    .co-calendar-navigation button, .search-form button,
+    .auth-password-toggle
+):not(:disabled):not([aria-disabled="true"]) {
+    background: var(--ayu-control-background, transparent);
+    color: var(--ayu-control-text, var(--ayu-control-ink, #78665d));
+}
+body :is(
+    .dp-quantity-control button, .kb-stepper button,
+    .co-calendar-navigation button, .search-form button,
+    .auth-password-toggle
+):not(:disabled):not([aria-disabled="true"]):is(:focus-visible, :active) {
+    --ayu-control-background: #fff0d8;
+    --ayu-control-text: #a04a15;
+}
+
+body .main-nav .nav-inner > :is(a, a.active) {
+    color: var(--ayu-nav-text, #ffffff);
+    font-weight: 400;
+}
+body .main-nav .nav-inner > :is(a, a.active)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: #d98f39;
+    transform: scaleX(0);
+    transition: transform 120ms ease;
+}
+body .main-nav .nav-inner > :is(a, a.active):is(:focus-visible, :active) { --ayu-nav-text: #ffe0ad; }
+body .main-nav .nav-inner > :is(a, a.active):is(:focus-visible, :active)::after { transform: scaleX(1); }
+
+body .main-nav .nav-inner > a.active { font-weight: 700; }
+body .main-nav .nav-inner > a.active::after { transform: scaleX(1); }
+
+@media (hover: hover) and (pointer: fine) {
+    body :is(
+    .button, .dp-action, .dp-secondary-actions button,
+    .cp-catalog-button, .tk-button,
+    .co-submit, .pb-button, .po-button,
+    .kb-primary, .kb-secondary,
+    .auth-submit
+):not(:disabled):not([aria-disabled="true"]):hover {
+        --ayu-action-background: var(--ayu-action-accent, #a04a15);
+        --ayu-action-text: #ffffff;
+        --ayu-action-border: var(--ayu-action-accent, #a04a15);
+        --ayu-action-caption: #fff0d8;
+    }
+    body .site-header .header-actions :is(.header-button, .header-button.header-current):not([aria-disabled="true"]):hover, body .ac-account .ac-account__toggle:not([aria-disabled="true"]):hover {
+        --ayu-menu-background: #a04a15;
+        --ayu-menu-text: #ffffff;
+        --ayu-menu-border: #d98f39;
+        --ayu-badge-background: #fff0d8;
+        --ayu-badge-text: #a04a15;
+    }
+    body .ac-account .ac-account__link:not([aria-disabled="true"]):hover {
+        --ayu-link-background: var(--ayu-link-highlight, #fff0d8);
+        --ayu-link-text: var(--ayu-link-highlight-text, #a04a15);
+    }
+    body :is(
+        .dp-quantity-control button, .kb-stepper button,
+        .co-calendar-navigation button, .search-form button,
+        .auth-password-toggle
+    ):not(:disabled):not([aria-disabled="true"]):hover {
+        --ayu-control-background: #fff0d8;
+        --ayu-control-text: #a04a15;
+    }
+    body .main-nav .nav-inner > :is(a, a.active):hover { --ayu-nav-text: #ffe0ad; }
+    body .main-nav .nav-inner > :is(a, a.active):hover::after { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body :is(
+    .button, .dp-action, .dp-secondary-actions button,
+    .cp-catalog-button, .tk-button,
+    .co-submit, .pb-button, .po-button,
+    .kb-primary, .kb-secondary,
+    .auth-submit
+):not(:disabled):not([aria-disabled="true"]), body .site-header .header-actions :is(.header-button, .header-button.header-current):not([aria-disabled="true"]), body .ac-account .ac-account__toggle:not([aria-disabled="true"]), body .main-nav .nav-inner > :is(a, a.active)::after { transition: none; }
+}

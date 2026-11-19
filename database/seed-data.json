@@ -1,0 +1,81 @@
+{
+    "produk": [
+        {
+            "id": 1,
+            "nama": "Lapis Legit Susu",
+            "kategori": "bolu",
+            "harga": 43000,
+            "gambar": "lapis-legit.webp",
+            "jenis": "Pre-Order",
+            "stok": 9,
+            "deskripsi": "Lapis legit susu dengan lapisan lembut, cocok untuk menemani waktu bersama keluarga maupun disajikan pada acara spesial. Produk dijual per loyang."
+        },
+        {
+            "id": 2,
+            "nama": "Bolu Pisang",
+            "kategori": "bolu",
+            "harga": 33000,
+            "gambar": "bolu-pisang.jpeg",
+            "jenis": "Ready Stock",
+            "stok": 8,
+            "deskripsi": "Bolu pisang dengan aroma pisang dan tekstur lembut. Cocok untuk teman minum teh atau sajian bersama keluarga. Produk dijual per loyang."
+        },
+        {
+            "id": 3,
+            "nama": "Brownies Panggang",
+            "kategori": "bolu",
+            "harga": 60000,
+            "gambar": "brownies.jpeg",
+            "jenis": "Ready Stock",
+            "stok": 6,
+            "deskripsi": "Brownies panggang dengan rasa cokelat untuk dinikmati bersama orang terdekat. Cocok untuk sajian keluarga dan berbagai acara. Produk dijual per loyang."
+        },
+        {
+            "id": 4,
+            "nama": "Wajik Ketan",
+            "kategori": "kue-basah",
+            "harga": 47000,
+            "gambar": "wajik-ketan.jpeg",
+            "jenis": "Ready Stock",
+            "stok": 5,
+            "deskripsi": "Wajik ketan dengan rasa manis dan tekstur khas ketan. Pilihan kue tradisional untuk dinikmati bersama keluarga atau disajikan pada acara. Produk dijual per loyang."
+        }
+    ],
+    "faq": [
+        {
+            "pertanyaan": "Apa perbedaan Pesan Sekarang dan Booking?",
+            "jawaban": "Pesan Sekarang menggunakan stok yang tersedia untuk pemesanan hari ini. Booking digunakan untuk memilih tanggal pengambilan atau pengiriman minimal 5 hari setelah tanggal pemesanan (H+5). Contohnya, jika memesan tanggal 4, tanggal paling awal yang dapat dipilih adalah tanggal 9. Kapasitas Booking maksimal 50 loyang per hari, dihitung dari total loyang seluruh pesanan Booking pada tanggal yang dipilih.",
+            "terbuka": true
+        },
+        {
+            "pertanyaan": "Bagaimana jika tanggal Booking atau kuotanya tidak tersedia?",
+            "jawaban": "Pilih tanggal lain yang masih tersedia. Tanggal yang dinonaktifkan atau kapasitasnya sudah penuh tidak dapat digunakan untuk membuat pesanan Booking.",
+            "terbuka": false
+        },
+        {
+            "pertanyaan": "Apakah pesanan bisa diambil di toko atau diantar?",
+            "jawaban": "Ya. Pilih Ambil di Toko atau Kirim ke Alamat. Pengiriman menggunakan Antar Ayu Cake untuk area Bukit Terap menuju Toboali dan sekitar Kecamatan Tukak Sadai. Admin memeriksa alamat sebelum mengonfirmasi ongkir.",
+            "terbuka": false
+        },
+        {
+            "pertanyaan": "Bagaimana biaya pengiriman ditentukan?",
+            "jawaban": "Admin menghitung ongkir Antar Ayu Cake setelah memeriksa alamat penerima. Jika alamat jelas dan berada dalam cakupan layanan, admin mengonfirmasi ongkir dan total tagihan tersedia di Detail Pesanan. Jika alamat kurang jelas atau di luar jangkauan, admin menolak pesanan dengan alasan yang dapat dibaca pelanggan.",
+            "terbuka": true
+        },
+        {
+            "pertanyaan": "Bagaimana cara membayar dan mengunggah bukti pembayaran?",
+            "jawaban": "Buka detail pesanan saat statusnya Menunggu Pembayaran, kemudian ikuti informasi metode pembayaran yang ditampilkan. Bayar sesuai total akhir melalui transfer bank ke rekening BRI atau SeaBank yang tersedia, lalu unggah gambar bukti pembayaran. Setelah bukti berhasil dikirim, status berubah menjadi Menunggu Verifikasi. Admin akan memeriksa bukti sebelum pesanan diproses.",
+            "terbuka": false
+        },
+        {
+            "pertanyaan": "Bagaimana cara melihat status pesanan?",
+            "jawaban": "Masuk ke akun pelanggan, buka menu Akun Saya, lalu pilih Status Pesanan. Pilih Detail Pesanan untuk melihat informasi pesanan, ongkos kirim, pembayaran, dan perkembangan statusnya.",
+            "terbuka": false
+        },
+        {
+            "pertanyaan": "Apakah pesanan dapat dibatalkan?",
+            "jawaban": "Buka detail pesanan untuk membatalkan pesanan selama masih menunggu konfirmasi ongkir atau pembayaran dan bukti pembayaran belum diunggah.",
+            "terbuka": false
+        }
+    ]
+}
